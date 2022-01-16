@@ -12,33 +12,35 @@ package assitedProjects;
 	public class validationOfemail {
 		
 		
-			   public static boolean isValidEmail(String email) {
-				   String regex = "^(.+)@(.+)$";
-				 //initialize the Pattern object
-			       Pattern pattern = Pattern.compile(regex);
-			       Matcher matcher = pattern.matcher(email);
-			       return matcher.matches();
+	public class validationOfemail {
 
-			       
-			   }
-
-			   public static void main(String[] args) {
-			       List<String> emails = new ArrayList<String>();
-			       // valid email addresses
-			       emails.add("santhosh@example.com");
-			       emails.add("santhoshkumar@example.com");
-			       emails.add("sandy@example.me.org");
-			       
-			       for (String value : emails) {
-			           System.out.println("The Email address " + value + " is " + (isValidEmail(value) ? "valid" : "invalid"));
-			       }
-			       
-			       System.out.println("Enter any email address to check");
-			       Scanner sc = new Scanner(System.in);
-			       String input = sc.nextLine();
-			       System.out.println("The Email address " + input + " is " + (isValidEmail(input) ? "valid" : "invalid"));
-			       
-			   }
-			   
-	}
-
+        public static boolean isValid(String email) 
+        { 
+            String emailRegex = "^[a-zA-Z0-9_+&-]+(?:\\.[a-zA-Z0-9_+&-]+)*@" +  //part before @
+                    "(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$"; 
+     
+            Pattern pat = Pattern.compile(emailRegex); 
+            if (email == null) 
+                return false; 
+            return pat.matcher(email).matches(); 
+        } 
+     
+        
+        public static void main(String[] args) 
+        { 
+            String email1 = "santhosh@gmail.com"; 
+            String email2 = "@gmail.com";
+            String email3 = "santhosh2318@gmail.com";
+            String[] emails= {email1,email2,email3};
+     
+            for (int i = 0; i < emails.length; i++) {
+                String email=emails[i];
+                if (isValid(email)) 
+                    System.out.print(email + " is valid email "); 
+                else
+                    System.out.print(email + " is invalid email"); 
+     
+                System.out.println();
+            }
+        } 
+}
