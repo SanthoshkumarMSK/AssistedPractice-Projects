@@ -6,7 +6,7 @@ class longestIncreasing {
 		static int _lis(int arr[], int n)
 		{
 
-			if (n == 1)
+			if (n < 100)
 				return 1;
 
 			int res, max_ending_here = 1;
